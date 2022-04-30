@@ -9,12 +9,19 @@ public class ClubMember {
 	
 	
 	public ClubMember(String name, String city, String state, String fpl) {
+		
 		this.name = name;
 		this.city = city;
 		this.state = state;
 		this.fpl = fpl;
 	}
 	
+
+	public ClubMember() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getName() {
 		return name;
 	}
