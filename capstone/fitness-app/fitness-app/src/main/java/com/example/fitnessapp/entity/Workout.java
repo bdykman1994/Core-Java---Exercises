@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "workout")
-public class WorkoutEntity implements Serializable {
+public class Workout implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class WorkoutEntity implements Serializable {
 	
 	@OneToMany
 	@JoinColumn(name = "fk_workout_id", referencedColumnName = "workout_id")
-	private List<ExerciseEntity> exerciseid;
+	private List<Exercise> exerciseid;
 	
 	@Column(name = "date")
 	private LocalDate date;

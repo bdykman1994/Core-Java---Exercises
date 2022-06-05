@@ -1,9 +1,9 @@
-package com.example.fitnessapp.repository;
+	package com.example.fitnessapp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.fitnessapp.entity.UserEntity;
+import com.example.fitnessapp.entity.User;
 
-public interface UserRepo extends JpaRepository<UserEntity, Long> {
+public interface UserRepo extends JpaRepository<User, Long> {
 
 }

@@ -11,7 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "userinfo")
-public class UserEntity implements Serializable {
+@SecondaryTable(name = "biometric", pkJoinColumns = @PrimaryKeyJoinColumn(name = "user_id"))
+public class User implements Serializable {
 	
 	/**
 	 * 
@@ -38,9 +40,24 @@ public class UserEntity implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_userid_id", referencedColumnName="user_id")
-	private List<WorkoutEntity> workoutEntity;
+	private List<Workout> workout;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_bio_id" )
-	private BiometricsEntity biometricsEntity;
+	@Column(name = "username")
+	private String username;
+	
+	@Column(name = "first_name", table = "biometric")
+	private String fname;
+	
+	@Column(name = "last_name", table = "biometric")
+	private String lname;
+	
+	@Column(name = "height", table = "biometric")
+	private Integer height;
+	
+	@Column(name = "weight", table = "biometric")
+	private Integer weight;
+	
+	@Column(name = "age", table = "biometric")
+	private Integer age;
 }
+

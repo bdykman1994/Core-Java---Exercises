@@ -21,11 +21,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "exercise")
 
-public class ExerciseEntity implements Serializable  {
+public class Exercise implements Serializable  {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,7 +32,7 @@ public class ExerciseEntity implements Serializable  {
 	
 	@OneToOne
 	@JoinColumn(name = "fk_exercise_type_id")
-	private ExerciseTypeEntity exerciseTypeEntity; 
+	private ExerciseType exerciseType; 
 	
 	@Column(name = "sets")
 	private Long sets;
