@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "biotmetrics")
-public class Biometrics implements Serializable {
+public class BiometricsEntity implements Serializable {
 	
 	/**
 	 * 
@@ -28,6 +28,7 @@ public class Biometrics implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "bio_id")
 	private Long bioId;
 	
 	@Column(name = "username")
@@ -47,8 +48,7 @@ public class Biometrics implements Serializable {
 	
 	@Column(name = "age")
 	private Integer age;
-
-    @OneToOne(targetEntity = Userinfo.class)
-    private Userinfo userId;
 	
+	@OneToOne(mappedBy = "biometricsEntity")
+	private UserEntity userEntity;
 }

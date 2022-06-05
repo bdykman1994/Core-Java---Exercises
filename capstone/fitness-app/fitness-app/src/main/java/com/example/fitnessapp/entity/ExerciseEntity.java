@@ -1,18 +1,14 @@
 package com.example.fitnessapp.entity;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -23,9 +19,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "workouts")
-public class Workouts implements Serializable {
+@Table(name = "exercise")
 
+public class ExerciseEntity implements Serializable  {
+	
 	/**
 	 * 
 	 */
@@ -33,14 +30,24 @@ public class Workouts implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ManyToOne
-	@JoinColumn(name = "workouts_id")
-	private Userinfo userinfo;
+	@Column(name = "exercise_id")
+	private Long exerciseId;
 	
-	@OneToMany(mappedBy = "workouts")
-	@ElementCollection(targetClass=List.class)
-	private List<Exercise> exerciseid;
+	@OneToOne
+	@JoinColumn(name = "fk_exercise_type_id")
+	private ExerciseTypeEntity exerciseTypeEntity; 
 	
-	@Column(name = "date")
-	private Date date;
+	@Column(name = "sets")
+	private Long sets;
+	
+	@Column(name = "reps")
+	private Long reps;
+	
+	@Column(name = "distance")
+	private Integer distance;
+	
+	@Column(name = "time")
+	private Integer time;
+
+
 }
