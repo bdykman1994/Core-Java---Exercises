@@ -9,5 +9,7 @@ public interface UserService {
 
 	 List<User> getUser();
 	 void addUser(User user);
-	 Optional<User> getUserById(Long id);
+	 Optional<User> getUserById(Long userid);
+	 public User updateWorkoutUserID(User user);
+	 
 }

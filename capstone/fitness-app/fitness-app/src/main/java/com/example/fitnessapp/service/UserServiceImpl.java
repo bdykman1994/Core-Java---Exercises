@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.fitnessapp.entity.User;
+import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.UserRepo;
 
 @Service
@@ -35,6 +36,16 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> getUserById(Long id) {
 		return userRepo.findById(id);
 		
+	}
+
+
+	@Override
+	public User updateWorkoutUserID(User user) {
+		List<Workout> wrk = user.getWorkout();
+		for (Workout wk : wrk) {
+			wk.setUser(user);
+		}
+		return user;
 	}
 
 

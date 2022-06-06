@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,12 +37,11 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
+	@Column(name = "user_id", nullable = false)
 	private Long userId;
 	
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_userid_id", referencedColumnName="user_id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Workout> workout;
 	
 	@Column(name = "username")
