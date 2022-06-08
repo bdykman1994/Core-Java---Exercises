@@ -7,9 +7,12 @@ import com.example.fitnessapp.entity.User;
 
 public interface UserService {
 
-	 List<User> getUser();
-	 void addUser(User user);
-	 Optional<User> getUserById(Long userid);
-	 public User updateWorkoutUserID(User user);
-	 
+	List<User> getUser();
+
+	void addUser(User user);
+
+	Optional<User> getUserById(Long userid);
+
+	public User updateWorkoutUserID(User user);
+
 }

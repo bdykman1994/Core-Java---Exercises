@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -30,8 +30,12 @@ public class Exercise implements Serializable  {
 	@Column(name = "exercise_id")
 	private Long exerciseId;
 	
-	@OneToOne
-	@JoinColumn(name = "fk_exercise_type_id")
+	@ManyToOne
+	@JoinColumn(name = "fk_workout_id", referencedColumnName = "workout_id")
+	private Workout workout;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_exercise_type_id", referencedColumnName = "exercise_Type_id")
 	private ExerciseType exerciseType; 
 	
 	@Column(name = "sets")
@@ -46,5 +50,6 @@ public class Exercise implements Serializable  {
 	@Column(name = "time")
 	private Integer time;
 
-
+	@Column(name = "weight")
+	private Integer weight;
 }

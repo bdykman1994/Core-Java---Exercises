@@ -16,14 +16,12 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepo userRepo;
-	
 
 	@Override
 	@Transactional
-	public  List<User> getUser() {
+	public List<User> getUser() {
 		return userRepo.findAll();
 	}
-
 
 	@Override
 	@Transactional
@@ -31,13 +29,11 @@ public class UserServiceImpl implements UserService {
 		userRepo.save(user);
 	}
 
-
 	@Override
 	public Optional<User> getUserById(Long id) {
 		return userRepo.findById(id);
-		
-	}
 
+	}
 
 	@Override
 	public User updateWorkoutUserID(User user) {
@@ -47,8 +43,5 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
-
-
-
 
 }

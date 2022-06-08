@@ -30,7 +30,6 @@ public class UserController {
 		return userService.getUser();
 
 	}
-
 	@PostMapping(path = "/findbyid")
 	public @ResponseBody Optional<User> getUserbyId(@RequestParam Long id) {
 		return userService.getUserById(id);
@@ -53,5 +52,3 @@ public class UserController {
 	}
 
 }
-
-
