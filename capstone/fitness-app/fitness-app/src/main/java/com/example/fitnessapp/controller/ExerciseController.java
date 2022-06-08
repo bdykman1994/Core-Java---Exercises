@@ -33,7 +33,7 @@ public class ExerciseController {
 		theExercise.setSets(set);
 		theExercise.setTime(time);
 		theExercise.setWeight(weight);
-		theExercise.setWorkout(workoutService.updateExerciseWorkoutID(workoutid));
+		theExercise.setWorkout(workoutid);
 		exerciseService.addExercise(theExercise);
 		return "heh";
 	}

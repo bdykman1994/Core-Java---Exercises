@@ -13,5 +13,5 @@ public interface WorkoutService {
 
 	Optional<Workout> getWorkoutById(Long id);
 
-	public Workout updateExerciseWorkoutID(Workout workout);
+//	public Workout updateExerciseWorkoutID(Workout workout);
 }

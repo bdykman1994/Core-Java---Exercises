@@ -29,7 +29,7 @@ public class ExerciseType {
 	@Column(name = "exercise_name")
 	private String exerciseTypeName;
 	
-	@OneToMany(mappedBy = "exerciseType")
+	@OneToMany()
 	private List<Exercise> exercise;
 	
 }

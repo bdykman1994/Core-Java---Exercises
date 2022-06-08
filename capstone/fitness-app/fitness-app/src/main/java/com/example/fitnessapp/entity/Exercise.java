@@ -1,6 +1,7 @@
 package com.example.fitnessapp.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,12 +33,8 @@ public class Exercise implements Serializable  {
 	@Column(name = "exercise_id")
 	private Long exerciseId;
 	
-	@ManyToOne
-	@JoinColumn(name = "fk_workout_id", referencedColumnName = "workout_id")
-	private Workout workout;
 	
 	@ManyToOne
-	@JoinColumn(name = "fk_exercise_type_id", referencedColumnName = "exercise_Type_id")
 	private ExerciseType exerciseType; 
 	
 	@Column(name = "sets")
@@ -52,4 +51,10 @@ public class Exercise implements Serializable  {
 
 	@Column(name = "weight")
 	private Integer weight;
+
+	public void setWorkout(Workout workoutid) {
+		
+	}
+
+
 }

@@ -37,8 +37,8 @@ public class User implements Serializable {
 	@Column(name = "user_id", nullable = false)
 	private Long userId;
 
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn
 	private List<Workout> workout;
 	
 	@Column(name = "username")

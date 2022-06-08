@@ -42,14 +42,14 @@ public class WorkoutServiceImpl implements WorkoutService {
 		return workoutRepo.findById(id);
 	}
 
-	@Override
-	public Workout updateExerciseWorkoutID(Workout workout) {
-	List<Exercise> exr = workout.getExercise();
-	for (Exercise ex: exr) {
-		ex.setWorkout(workout);
-	}
-	
-		return null;
-	}
+//	@Override
+//	public Workout updateExerciseWorkoutID(Workout workout) {
+//	List<Exercise> exr = workout.getExercise();
+//	for (Exercise ex: exr) {
+//		ex.setWorkout(workout);
+//	}
+//	
+//		return null;
+//	}
 
 }
