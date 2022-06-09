@@ -22,13 +22,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping(path = "/listusers")
-	public @ResponseBody List<User> listUser(Model theModel) {
+	@GetMapping("/listusers")
+	public String listUser(Model theModel) {
 
 		List<User> theUser = userService.getUser();
 		theModel.addAttribute("users", theUser);
-		return userService.getUser();
-
+		return "test";
 	}
 	@PostMapping(path = "/findbyid")
 	public @ResponseBody Optional<User> getUserbyId(@RequestParam Long id) {

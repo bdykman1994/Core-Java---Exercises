@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,9 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,12 +35,13 @@ public class Workout implements Serializable {
 	@Column(name = "workout_id")
 	private Long workoutId;
 
+	@OneToMany
+	private List<Exercise> exercise;
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany
-	private List<Exercise> exerciseid;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date")

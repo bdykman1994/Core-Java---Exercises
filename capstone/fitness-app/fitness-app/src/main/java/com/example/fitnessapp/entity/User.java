@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
@@ -43,7 +42,13 @@ public class User implements Serializable {
 	
 	@Column(name = "username")
 	private String username;
-
+	
+	@Column(name = "password")
+	private String password;
+	
+	@Column(name = "role")
+	private String role;
+	
 	@Column(name = "first_name", table = "biometric")
 	private String fname;
 
@@ -58,4 +63,5 @@ public class User implements Serializable {
 
 	@Column(name = "age", table = "biometric")
 	private Integer age;
+	
 }

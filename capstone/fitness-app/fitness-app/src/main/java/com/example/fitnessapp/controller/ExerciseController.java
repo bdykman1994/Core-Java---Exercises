@@ -1,7 +1,11 @@
 package com.example.fitnessapp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +27,7 @@ public class ExerciseController {
 	@Autowired
 	WorkoutService workoutService;
 	
-	@PostMapping(path = "/addWorkout")
+	@PostMapping(path = "/addexercise")
 	public @ResponseBody String addWorkout(@RequestParam Workout workoutid,@RequestParam ExerciseType typeid, @RequestParam Long set, 
 			@RequestParam Long rep, @RequestParam Integer distance,@RequestParam Integer time, @RequestParam Integer weight) {
 		Exercise theExercise = new Exercise();
@@ -36,5 +40,13 @@ public class ExerciseController {
 		theExercise.setWorkout(workoutid);
 		exerciseService.addExercise(theExercise);
 		return "heh";
+	}
+	
+	@GetMapping(path = "/getexercise")
+	public @ResponseBody List<Exercise> getWorkout(Model theModel){
+		
+		List<Workout> theExercise = workoutService.getWorkout();
+		theModel.addAttribute("workout", theExercise);
+		return exerciseService.getExercise();
 	}
 }
