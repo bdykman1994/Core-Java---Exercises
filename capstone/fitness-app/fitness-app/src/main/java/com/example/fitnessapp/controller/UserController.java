@@ -21,7 +21,7 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	
 	@GetMapping("/listusers")
 	public String listUser(Model theModel) {
 

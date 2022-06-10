@@ -42,11 +42,12 @@ public class ExerciseController {
 		return "heh";
 	}
 	
+	//idk whats going on here work on this later 
 	@GetMapping(path = "/getexercise")
-	public @ResponseBody List<Exercise> getWorkout(Model theModel){
+	public String getWorkout(Model theModel){
 		
-		List<Workout> theExercise = workoutService.getWorkout();
+		List<Exercise> theExercise = exerciseService.getExercise();
 		theModel.addAttribute("workout", theExercise);
-		return exerciseService.getExercise();
-	}
+		return "exercisePage";
+				}
 }

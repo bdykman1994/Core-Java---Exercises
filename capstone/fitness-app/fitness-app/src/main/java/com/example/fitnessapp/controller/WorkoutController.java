@@ -43,7 +43,7 @@ public class WorkoutController {
 	public @ResponseBody List<Workout> getWorkout(Model theModel){
 		
 		List<Workout> theWorkout = workoutService.getWorkout();
-		theModel.addAttribute("workout", theWorkout);
+		theModel.addAttribute("allworkout", theWorkout);
 		return workoutService.getWorkout();
 	}
 	

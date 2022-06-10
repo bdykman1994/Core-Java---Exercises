@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <link rel="stylesheet" type="text/css" href="./exercisePage.css" media="screen">
     <title>Document</title>
@@ -16,14 +17,22 @@
       <button onclick="toShow()">Click for Random Cooking video</button>
       <div id="random_player"></div>
       <div>
-      <table id="Recipies">
+      <table id="exercises">
         <tr>
-          <th>Recipie Name</th>
-          <th>Ingredients</th>
+          <th>Exercise Type</th>
+          <th>Sets</th>
+          <th>Reps</th>
+          <th>Weight</th>
+          <th>Distance</th>
+          <th>Time</th>
         </tr>
-        <tr>
-          <td>Burger</td>
-          <td>Beef</td>
+        <tr th:each="workout:${workout}">
+          <td th:text="${workout.exerciseType.exerciseTypeName}"></td>
+          <td th:text="${workout.sets}"></td>
+          <td th:text="${workout.reps}"></td>
+          <td th:text="${workout.distance}"></td>
+          <td th:text="${workout.time}"></td>
+          <td th:text="${workout.distance}"></td>
         </tr>
       </table>
     </div>
