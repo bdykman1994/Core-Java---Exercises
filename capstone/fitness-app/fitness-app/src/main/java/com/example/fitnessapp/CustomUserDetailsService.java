@@ -1,4 +1,4 @@
-package com.example.fitnessapp.security;
+package com.example.fitnessapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.fitnessapp.entity.User;
 import com.example.fitnessapp.repository.UserRepo;
 
-@Service
+
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired

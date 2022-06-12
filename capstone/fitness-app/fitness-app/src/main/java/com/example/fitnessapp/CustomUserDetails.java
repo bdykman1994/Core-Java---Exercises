@@ -1,4 +1,4 @@
-package com.example.fitnessapp.security;
+package com.example.fitnessapp;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -15,14 +15,12 @@ public class CustomUserDetails implements UserDetails {
 	
 
 	public CustomUserDetails(User user) {
-		super();
 		this.user = user;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
+		return null;
 	}
 
 	@Override
@@ -34,7 +32,7 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return user.getUsername();
+		return user.getEmail();
 	}
 
 	@Override

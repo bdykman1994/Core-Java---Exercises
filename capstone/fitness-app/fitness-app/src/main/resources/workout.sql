@@ -4,8 +4,8 @@ LIMIT 0, 1000
 
 -- Date: 2022-06-08 15:13
 */
-INSERT INTO `userinfo` (`user_id`,`password`,`role`,`username`) VALUES (1,'$2y$10$oROScgU4l.R/U3Z448jReOrEgKvVGoYQ9bpKMRMe7G2ucas3ATTmy','USER','bdizzer');
-INSERT INTO `userinfo` (`user_id`,`password`,`role`,`username`) VALUES (2,'$2y$10$oROScgU4l.R/U3Z448jReOrEgKvVGoYQ9bpKMRMe7G2ucas3ATTmy','USER','john123');
+INSERT INTO `userinfo` (`user_id`,`password`,`role`,`username`, `email`) VALUES (1,'$2y$10$oROScgU4l.R/U3Z448jReOrEgKvVGoYQ9bpKMRMe7G2ucas3ATTmy','USER','bdizzer', 'nbizzer@aol.com');
+INSERT INTO `userinfo` (`user_id`,`password`,`role`,`username`,`email`) VALUES (2,'$2y$10$oROScgU4l.R/U3Z448jReOrEgKvVGoYQ9bpKMRMe7G2ucas3ATTmy','USER','john123', 'jmoney@gmail.com');
 INSERT INTO `biometric` (`age`,`first_name`,`height`,`last_name`,`weight`,`user_id`) VALUES (28,'brandon',95,'dykman',145,1);
 INSERT INTO `biometric` (`age`,`first_name`,`height`,`last_name`,`weight`,`user_id`) VALUES (18,'John',95,'Smith',200,2);
 INSERT INTO `workout` (`workout_id`,`date`,`user_id`) VALUES (1,'1994-01-12',1);

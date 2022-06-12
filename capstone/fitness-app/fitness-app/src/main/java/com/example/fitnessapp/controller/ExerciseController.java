@@ -27,6 +27,14 @@ public class ExerciseController {
 	@Autowired
 	WorkoutService workoutService;
 	
+	
+	@GetMapping("")
+	public String viewExerciseHome(Model theModel) {
+		List<Exercise> theExercise = exerciseService.getExercise();
+		theModel.addAttribute("workout", theExercise);
+		return "exercisePage";
+	}
+	
 	@PostMapping(path = "/addexercise")
 	public @ResponseBody String addWorkout(@RequestParam Workout workoutid,@RequestParam ExerciseType typeid, @RequestParam Long set, 
 			@RequestParam Long rep, @RequestParam Integer distance,@RequestParam Integer time, @RequestParam Integer weight) {
@@ -41,13 +49,4 @@ public class ExerciseController {
 		exerciseService.addExercise(theExercise);
 		return "heh";
 	}
-	
-	//idk whats going on here work on this later 
-	@GetMapping(path = "/getexercise")
-	public String getWorkout(Model theModel){
-		
-		List<Exercise> theExercise = exerciseService.getExercise();
-		theModel.addAttribute("workout", theExercise);
-		return "exercisePage";
-				}
 }
