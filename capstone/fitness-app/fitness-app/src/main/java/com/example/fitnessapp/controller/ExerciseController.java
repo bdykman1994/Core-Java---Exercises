@@ -36,8 +36,8 @@ public class ExerciseController {
 	}
 	
 	@PostMapping(path = "/addexercise")
-	public @ResponseBody String addWorkout(@RequestParam Workout workoutid,@RequestParam ExerciseType typeid, @RequestParam Long set, 
-			@RequestParam Long rep, @RequestParam Integer distance,@RequestParam Integer time, @RequestParam Integer weight) {
+	public String addWorkout( Workout workoutid, ExerciseType typeid, Long set, 
+			 Long rep,  Integer distance, Integer time, Integer weight) {
 		Exercise theExercise = new Exercise();
 		theExercise.setExerciseType(typeid);
 		theExercise.setReps(rep);

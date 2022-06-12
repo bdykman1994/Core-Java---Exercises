@@ -18,6 +18,14 @@ public class CustomUserDetails implements UserDetails {
 		this.user = user;
 	}
 
+	public String getFirstName() {
+		return this.user.getUsername();
+	}
+	
+	public Long getUsersId() {
+		return this.user.getUserId();
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return null;

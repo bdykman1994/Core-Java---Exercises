@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 
 <head>
-    <link rel="stylesheet" type="text/css" href="./exercisePage.css" media="screen">
+    <link th:href="@{/css/exercisePage.css}"  rel="stylesheet" type="text/css"  media="screen"/>
     <title>Document</title>
 </head>
 <body>
@@ -14,8 +16,7 @@
           <li>Workout Programs</li>
         </ul>
       </header>
-      <button onclick="toShow()">Click for Random Cooking video</button>
-      <div id="random_player"></div>
+      <div><span th:text = "${#authentication.getPrincipal().getFirstName()}"></span>'s Exercises</div>
       <div>
       <table id="exercises">
         <tr>
@@ -36,6 +37,5 @@
         </tr>
       </table>
     </div>
-    <h5>refresh for new video</h5>
 </body>
 </html>
