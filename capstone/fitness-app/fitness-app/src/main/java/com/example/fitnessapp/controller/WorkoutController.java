@@ -41,7 +41,7 @@ public class WorkoutController {
 	
 	@GetMapping(path = "/listworkout")
 	public @ResponseBody List<Workout> getWorkout(Model theModel){
-		
+			
 		List<Workout> theWorkout = workoutService.getWorkout();
 		theModel.addAttribute("allworkout", theWorkout);
 		return workoutService.getWorkout();

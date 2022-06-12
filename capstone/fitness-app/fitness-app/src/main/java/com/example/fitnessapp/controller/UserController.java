@@ -41,8 +41,8 @@ public class UserController {
 			@RequestParam Integer age) {
 		User newUser = new User();
 		newUser.setUsername(username);
-		newUser.setFname(fname);
-		newUser.setLname(lname);
+		newUser.setFName(fname);
+		newUser.setLName(lname);
 		newUser.setHeight(height);
 		newUser.setWeight(weight);
 		newUser.setAge(age);

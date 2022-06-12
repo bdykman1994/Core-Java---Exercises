@@ -1,4 +1,4 @@
-package com.example.fitnessapp;
+package com.example.fitnessapp.security;
 
 import java.util.Collection;
 import java.util.Collections;

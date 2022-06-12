@@ -1,4 +1,4 @@
-package com.example.fitnessapp.service;
+package com.example.fitnessapp.serviceimpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.UserRepo;
 import com.example.fitnessapp.repository.WorkoutRepo;
+import com.example.fitnessapp.service.WorkoutService;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {

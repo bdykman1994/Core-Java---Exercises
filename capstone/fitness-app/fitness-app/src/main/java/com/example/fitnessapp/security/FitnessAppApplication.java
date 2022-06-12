@@ -1,4 +1,4 @@
-package com.example.fitnessapp;
+package com.example.fitnessapp.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

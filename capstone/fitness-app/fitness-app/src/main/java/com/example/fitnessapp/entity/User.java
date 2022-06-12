@@ -40,8 +40,11 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Workout> workout;
 	
-	@Column(name = "username")
+	@Column(name = "username", unique = true)
 	private String username;
+	
+	@Column(name = "email", unique = true)
+	private String email;
 	
 	@Column(name = "password")
 	private String password;
@@ -50,10 +53,10 @@ public class User implements Serializable {
 	private String role;
 	
 	@Column(name = "first_name", table = "biometric")
-	private String fname;
+	private String fName;
 
 	@Column(name = "last_name", table = "biometric")
-	private String lname;
+	private String lName;
 
 	@Column(name = "height", table = "biometric")
 	private Integer height;

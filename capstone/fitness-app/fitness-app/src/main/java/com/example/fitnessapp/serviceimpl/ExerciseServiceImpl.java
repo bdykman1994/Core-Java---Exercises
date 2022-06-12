@@ -1,4 +1,4 @@
-package com.example.fitnessapp.service;
+package com.example.fitnessapp.serviceimpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.fitnessapp.entity.Exercise;
 import com.example.fitnessapp.repository.ExerciseRepo;
+import com.example.fitnessapp.service.ExerciseService;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {

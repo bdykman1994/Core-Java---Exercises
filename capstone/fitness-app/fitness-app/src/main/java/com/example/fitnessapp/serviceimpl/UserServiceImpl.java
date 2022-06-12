@@ -1,30 +1,34 @@
-package com.example.fitnessapp.service;
+package com.example.fitnessapp.serviceimpl;
 
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.fitnessapp.entity.User;
 import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.UserRepo;
+import com.example.fitnessapp.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepo userRepo;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@Override
-	@Transactional
 	public List<User> getUser() {
 		return userRepo.findAll();
 	}
 
 	@Override
-	@Transactional
 	public void addUser(User user) {
 		userRepo.save(user);
 	}

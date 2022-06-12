@@ -1,4 +1,4 @@
-package com.example.fitnessapp;
+package com.example.fitnessapp.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
