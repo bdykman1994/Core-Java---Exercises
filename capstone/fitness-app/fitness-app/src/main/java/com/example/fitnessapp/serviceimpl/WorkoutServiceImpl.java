@@ -6,8 +6,10 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.example.fitnessapp.CustomUserDetails;
 import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.UserRepo;
 import com.example.fitnessapp.repository.WorkoutRepo;
@@ -30,7 +32,6 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 
 	@Override
-	@Transactional
 	public List<Workout> getWorkout() {
 			return workoutRepo.findAll();
 
@@ -41,6 +42,8 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public Optional<Workout> getWorkoutById(Long id) {
 		return workoutRepo.findById(id);
 	}
+
+
 
 //	@Override
 //	public Workout updateExerciseWorkoutID(Workout workout) {

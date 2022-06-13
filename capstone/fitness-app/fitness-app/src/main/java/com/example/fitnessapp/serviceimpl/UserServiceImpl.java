@@ -39,13 +39,13 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	@Override
-	public User updateWorkoutUserID(User user) {
-		List<Workout> wrk = user.getWorkout();
-		for (Workout wk : wrk) {
-			wk.setUser(user);
-		}
-		return user;
-	}
+//	@Override
+//	public User updateWorkoutUserID(User user) {
+//		List<Workout> wrk = user.getWorkout();
+//		for (Workout wk : wrk) {
+//			wk.setUser(user);
+//		}
+//		return user;
+//	}
 
 }

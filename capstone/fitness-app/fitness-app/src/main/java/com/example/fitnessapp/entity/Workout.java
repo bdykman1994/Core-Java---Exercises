@@ -34,17 +34,16 @@ public class Workout implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "workout_id")
 	private Long workoutId;
-
-	@OneToMany
-	private List<Exercise> exercise;
-	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
-	
+		
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date")
 	private Date date;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+
 
 }

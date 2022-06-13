@@ -23,11 +23,11 @@ public class UserController {
 	private UserService userService;
 	
 	@GetMapping("/listusers")
-	public String listUser(Model theModel) {
+	public @ResponseBody List<User> listUser(Model theModel) {
 
 		List<User> theUser = userService.getUser();
 		theModel.addAttribute("users", theUser);
-		return "test";
+		return theUser;
 	}
 	@PostMapping(path = "/findbyid")
 	public @ResponseBody Optional<User> getUserbyId(@RequestParam Long id) {

@@ -6,7 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,28 +33,27 @@ public class Exercise implements Serializable  {
 	@Column(name = "exercise_id")
 	private Long exerciseId;
 	
-	
 	@ManyToOne
-	private ExerciseType exerciseType; 
+	@JoinColumn(name = "workout_id")
+	private Workout workout;
+	
+	@Column(name = "exerciseType")
+	private String exerciseType; 
+	
 	
 	@Column(name = "sets")
 	private Long sets;
 	
 	@Column(name = "reps")
 	private Long reps;
-	
-	@Column(name = "distance")
-	private Integer distance;
-	
+
 	@Column(name = "time")
 	private Integer time;
 
 	@Column(name = "weight")
 	private Integer weight;
 
-	public void setWorkout(Workout workoutid) {
-		
-	}
+
 
 
 }
