@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,10 +54,16 @@ public class WorkoutController {
 		}
 	
 	@PostMapping("/process_workout")
-	public String processWorkout(Workout workout) {
-	Long userid =  ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsersId();
-	System.out.println(userid);
+	public String processWorkout(Workout workout, Authentication authentication) {
+	
+//		Long userid =((User) authentication.getPrincipal()).getUserId();
+//				System.out.println(userid);
+	
+//	Optional<User> userids = userService.getUserById((long) 1);
+//	workout.setUserid(userids);
 	workoutRepo.save(workout);
+	
+	
 	return "workout_sucess";
 	}
 	

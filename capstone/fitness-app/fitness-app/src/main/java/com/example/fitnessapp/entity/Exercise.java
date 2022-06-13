@@ -34,7 +34,6 @@ public class Exercise implements Serializable  {
 	private Long exerciseId;
 	
 	@ManyToOne
-	@JoinColumn(name = "workout_id")
 	private Workout workout;
 	
 	@Column(name = "exerciseType")

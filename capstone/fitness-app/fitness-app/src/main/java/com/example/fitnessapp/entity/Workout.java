@@ -3,6 +3,7 @@ package com.example.fitnessapp.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +43,11 @@ public class Workout implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user;
+	private User userid;
+
+
+
+
 
 
 

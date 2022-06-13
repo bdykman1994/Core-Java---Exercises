@@ -35,19 +35,19 @@ public class UserController {
 
 	}
 
-	@PostMapping(path = "/addusers")
-	public @ResponseBody String addUser(@RequestParam String username, @RequestParam String fname,
-			@RequestParam String lname, @RequestParam Integer height, @RequestParam Integer weight,
-			@RequestParam Integer age) {
-		User newUser = new User();
-		newUser.setUsername(username);
-		newUser.setFirstName(fname);
-		newUser.setLastName(lname);
-		newUser.setHeight(height);
-		newUser.setWeight(weight);
-		newUser.setAge(age);
-		userService.addUser(newUser);
-		return "user saved";
-	}
+//	@PostMapping(path = "/addusers")
+//	public @ResponseBody String addUser(@RequestParam String username, @RequestParam String fname,
+//			@RequestParam String lname, @RequestParam Integer height, @RequestParam Integer weight,
+//			@RequestParam Integer age) {
+//		User newUser = new User();
+//		newUser.setUsername(username);
+//		newUser.setFirstName(fname);
+//		newUser.setLastName(lname);
+//		newUser.setHeight(height);
+//		newUser.setWeight(weight);
+//		newUser.setAge(age);
+//		userService.addUser(newUser);
+//		return "user saved";
+//	}
 
 }
