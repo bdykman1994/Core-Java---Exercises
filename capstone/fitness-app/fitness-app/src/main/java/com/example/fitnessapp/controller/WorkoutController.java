@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,7 +60,7 @@ public class WorkoutController {
 //		}
 //	
 
-	@GetMapping("")
+	@GetMapping({"", "/", "/list"})
 	public String workoutHomeAllWorkOuts(Model model) {
 		List<Workout> workout = workoutService.getAllWorkout();
 		List<Exercise> exercise = exerciseService.getAllExercise();
@@ -111,7 +112,12 @@ public class WorkoutController {
 		return mav;
 	}
 	
-	
+	@PostMapping("/saveWorkout")
+	public String saveWorkout(@ModelAttribute Workout workout) {
+		workoutRepo.save(workout);
+		System.out.println(workout.getDate());
+		return"success";
+	}
 	
 	
 	

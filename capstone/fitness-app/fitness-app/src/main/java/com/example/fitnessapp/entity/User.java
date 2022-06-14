@@ -1,3 +1,4 @@
+
 package com.example.fitnessapp.entity;
 
 import java.io.Serializable;
