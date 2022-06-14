@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+<head>
+<link th:href="@{/css/exercisePage.css}" rel="stylesheet"
+	type="text/css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>Document</title>
+</head>
+<body>
+	<header>
+		<a href="#" class="logo">Swole Patrol</a>
+		<ul>
+			<li><a th:href="@{/workout/registerworkout}">Add Workout</a></li>
+			<li><a th:href="@{/workout/registerexercise}">Add Exercise</a></li>
+			<li>Workout Programs</li>
+		</ul>
+	</header>
+	
+	<div>
+	<a th:href = "@{/addWorkout}" class="btn btn-primary mb-2">Add Workout</a>
+	
+	</div>
+	<div>
+		<span th:text="${#authentication.getPrincipal().getFirstName()}"></span>'s
+		Exercises
+	</div>
+	<div>
+		<table id="workout">
+			<thead>
+				<tr>
+					<th>Workout ID</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<thead>
+
+				<tr th:each="workout:${workout}">
+					<td th:text="${workout.workoutId}"></td>
+					<td th:text="${workout.date}"></td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	
+	<!--  <div>
+	<table id="exercises">
+			<thead>
+				<tr>
+					<th>Exercise ID</th>
+					<th>Workout ID</th>
+					<th>Exericse Name</th>
+					<th>Sets</th>
+					<th>Reps</th>
+					<th>Time</th>
+					<th>Weight</th>
+				</tr>
+			</thead>
+			<thead>
+
+				<tr th:each="exercise:${exercise}">
+					<td th:text="${exercise.exerciseId}"></td>
+					<td th:text="${exercise.workout}"></td>
+					<td th:text="${exercise.exerciseType}"></td>
+					<td th:text="${exercise.sets}"></td>
+					<td th:text="${exercise.reps}"></td>
+					<td th:text="${exercise.time}"></td>
+					<td th:text="${exercise.weight}"></td>
+				</tr>
+			</thead>
+		</table>
+	</div> -->
+</body>
+ </html>

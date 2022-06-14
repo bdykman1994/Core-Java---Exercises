@@ -35,7 +35,7 @@ public class ExerciseController {
 	
 	@GetMapping("")
 	public String viewExerciseHome(Model theModel) {
-		List<Exercise> theExercise = exerciseService.getExercise();
+		List<Exercise> theExercise = exerciseService.getAllExercise();
 		theModel.addAttribute("workout", theExercise);
 		Long userid = (Long) ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsersId();
 		System.out.println(userid);
@@ -62,8 +62,8 @@ public class ExerciseController {
 	@GetMapping(path = "/getexercise")
 	public @ResponseBody List<Exercise> getWorkout(Model theModel){
 		
-		List<Workout> theExercise = workoutService.getWorkout();
+		List<Workout> theExercise = workoutService.getAllWorkout();
 		theModel.addAttribute("workout", theExercise);
-		return exerciseService.getExercise();
+		return exerciseService.getAllExercise();
 	}
 }

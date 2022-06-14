@@ -31,17 +31,24 @@ public class WorkoutServiceImpl implements WorkoutService {
 		workoutRepo.save(workout);
 	}
 
-	@Override
-	public List<Workout> getWorkout() {
-			return workoutRepo.findAll();
-
-	}
 
 	@Override
 	@Transactional
 	public Optional<Workout> getWorkoutById(Long id) {
 		return workoutRepo.findById(id);
 	}
+
+	@Override
+	public List<Workout> getAllWorkout() {
+		return (List<Workout>) workoutRepo.findAll();
+	}
+
+	@Override
+	public void deleteWorkout(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 

@@ -7,7 +7,7 @@ import com.example.fitnessapp.entity.Exercise;
 
 public interface ExerciseService {
 
-	List<Exercise> getExercise();
+	List<Exercise> getAllExercise();
 	
 	void addExercise(Exercise exercise);
 	

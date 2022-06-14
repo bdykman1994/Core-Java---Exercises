@@ -18,8 +18,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 	ExerciseRepo exerciseRepo;
 	
 	@Override
-	public List<Exercise> getExercise() {
-		return exerciseRepo.findAll();
+	public List<Exercise> getAllExercise() {
+		return (List<Exercise>) exerciseRepo.findAll();
 	}
 
 	@Override

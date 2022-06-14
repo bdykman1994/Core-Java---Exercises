@@ -9,12 +9,17 @@ import com.example.fitnessapp.entity.Workout;
 
 public interface WorkoutService {
 
-	List<Workout> getWorkout();
+	public List<Workout> getAllWorkout();
 
 	public void addWorkout(Workout workout);
 
-	Optional<Workout> getWorkoutById(Long id);
+	public Optional<Workout> getWorkoutById(Long id);
+	
+	public void deleteWorkout(Long id);
+	
+	
 
+	
 //	public List<Workout> findByUserId();
 //	public Workout updateExerciseWorkoutID(Workout workout);
 }

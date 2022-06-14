@@ -45,10 +45,7 @@ public class Workout implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User userid;
 
-
-
-
-
-
+	@OneToMany
+	private List<Exercise> exercise;
 
 }
