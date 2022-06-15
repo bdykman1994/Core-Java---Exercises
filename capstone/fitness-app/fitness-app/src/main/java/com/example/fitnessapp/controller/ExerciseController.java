@@ -37,7 +37,7 @@ public class ExerciseController {
 	public String viewExerciseHome(Model theModel) {
 		List<Exercise> theExercise = exerciseService.getAllExercise();
 		theModel.addAttribute("workout", theExercise);
-		Long userid = (Long) ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsersId();
+		Long userid = SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsersId();
 		System.out.println(userid);
 		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
 		return "exercisePage";

@@ -24,7 +24,7 @@
 	
 	</div>
 	<div>
-		<span th:text="${#authentication.getPrincipal().getFirstName()}"></span>
+		<span th:text="${#authentication.getPrincipal().getUsername}"></span>
 	</div>
 	<div>
 		<table id="workout">
@@ -42,7 +42,7 @@
 					<td th:text="${#dates.format(workout.date, 'MM-dd-yyyy')}"></td>
 					<td>
 					<a th:href="@{/workout/showUpdateForm(workoutId = ${workout.workoutId})}" class = "btn btn-info">Update</a>
-					<a th:href="@{/workout/deleteEmployee(workoutId = ${workout.workoutId})}" class = "btn btn-danger ml-2" >Delete</a>
+					<a th:href="@{/workout/deleteWorkout(workoutId = ${workout.workoutId})}" class = "btn btn-danger ml-2" >Delete</a>
 					</td>
 				</tr>
 			</thead>

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.fitnessapp.CustomUserDetails;
 import com.example.fitnessapp.entity.Exercise;
@@ -125,6 +126,13 @@ public class WorkoutController {
 		return mav;
 	}
 	
+	@GetMapping("/deleteWorkout")
+	public String deleteWorkout(@RequestParam Long workoutId) {
+//		//shows confirmation on redirect
+//		redirectAttributes.addFlashAttribute()
+		workoutRepo.deleteById(workoutId);
+		return "redirect:/workout/list";
+	}
 	
 //	@GetMapping(path = "/listworkout")
 //	public @ResponseBody List<Workout> getWorkout(Model theModel){
