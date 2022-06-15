@@ -59,7 +59,6 @@ public class WorkoutController {
 //		return "gucci";
 //		}
 //	
-
 	@GetMapping({"", "/", "/list"})
 	public String workoutHomeAllWorkOuts(Model model) {
 		List<Workout> workout = workoutService.getAllWorkout();
@@ -103,7 +102,6 @@ public class WorkoutController {
 		
 		return "success";
 	}
-	
 	@GetMapping("/addWorkoutForm")
 	public ModelAndView addWorkoutForm() {
 		ModelAndView mav  = new ModelAndView("add-workout-form");
@@ -116,9 +114,16 @@ public class WorkoutController {
 	public String saveWorkout(@ModelAttribute Workout workout) {
 		workoutRepo.save(workout);
 		System.out.println(workout.getDate());
-		return"success";
+		return"redirect:/workout/list";
 	}
 	
+	@GetMapping("/showUpdateForm")
+	public ModelAndView showUpdateForm(@RequestParam Long workoutId) {
+		ModelAndView mav = new ModelAndView("add-workout-form");
+		Workout workout = workoutRepo.findById(workoutId).get();
+		mav.addObject("workout",workout);
+		return mav;
+	}
 	
 	
 //	@GetMapping(path = "/listworkout")
