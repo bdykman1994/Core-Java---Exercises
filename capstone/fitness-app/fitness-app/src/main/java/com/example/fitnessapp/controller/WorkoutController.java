@@ -70,20 +70,16 @@ public class WorkoutController {
 
 	@GetMapping({"", "/", "/list"})
 	public String workoutHomeAllWorkOuts(Model model) {
-		List<Workout> workout = workoutService.getAllWorkout();
-		List<Exercise> exercise = exerciseService.getAllExercise();
 		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(principal instanceof UserDetails) {
-			String username = ((UserDetails)principal).getUsername();
-			System.out.println("This is First IF" + username);
-			User user1 = userRepo.findByEmail(username);
-			System.out.println("email=" + user1.getEmail() + "name =" + user1.getFirstName() + "id = " + user1.getUserId());
-		} else {
-			String username = principal.toString();
-			System.out.println("This is first Else" + username);
-		}
+		String username  =  ((UserDetails)principal).getUsername();
+		User user = userRepo.findByEmail(username);
+		Long userId = user.getUserId();
 		
+		List<Workout> workout = workoutRepo.getWorkoutsForUser(userId);
+		List<Exercise> exercise = exerciseService.getAllExercise();
+		
+
 
 		model.addAttribute("workout", workout);
 		model.addAttribute("exercise", exercise);
@@ -93,8 +89,9 @@ public class WorkoutController {
 
 
 	@PostMapping("/process_workout")
-	public String processWorkout(Workout workout) {
+	public String processWorkout(Workout workout ) {
 
+		
 		workoutRepo.save(workout);
 
 		return "success";
@@ -126,6 +123,14 @@ public class WorkoutController {
 	
 	@PostMapping("/saveWorkout")
 	public String saveWorkout(@ModelAttribute Workout workout) {
+		
+		//to set the foreign key user_id to a newly created workout ( that way we know who made the workout)
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username  =  ((UserDetails)principal).getUsername();
+		User user = userRepo.findByEmail(username);
+		Long userId = user.getUserId();
+		workout.setUserId(user);
+		
 		workoutRepo.save(workout);
 		System.out.println(workout.getDate());
 		return"redirect:/workout/list";

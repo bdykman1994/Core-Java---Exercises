@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.fitnessapp.entity.User;
+import com.example.fitnessapp.repository.UserRepo;
 
 public interface UserService {
 
