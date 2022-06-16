@@ -37,33 +37,12 @@ public class ExerciseController {
 	public String viewExerciseHome(Model theModel) {
 		List<Exercise> theExercise = exerciseService.getAllExercise();
 		theModel.addAttribute("workout", theExercise);
-		Long userid = SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsersId();
-		System.out.println(userid);
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+//		Long userid = ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal().getUsersId();
+//		System.out.println(userid);
+//		workoutService.getWorkoutById(userid)
+//		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
 		return "exercisePage";
 	}
 	
-//	@PostMapping(path = "/addexercise")
-//	public String addWorkout( Workout workoutid, ExerciseType typeid, Long set, 
-//			 Long rep,  Integer distance, Integer time, Integer weight) {
-//		Exercise theExercise = new Exercise();
-//		theExercise.setExerciseType(typeid);
-//		theExercise.setReps(rep);
-//		theExercise.setDistance(distance);
-//		theExercise.setSets(set);
-//		theExercise.setTime(time);
-//		theExercise.setWeight(weight);
-//		theExercise.setWorkout(workoutid);
-//		exerciseService.addExercise(theExercise);
-//		return "heh";
-//	}
-	
-	//not perminent used to test in postman
-	@GetMapping(path = "/getexercise")
-	public @ResponseBody List<Exercise> getWorkout(Model theModel){
-		
-		List<Workout> theExercise = workoutService.getAllWorkout();
-		theModel.addAttribute("workout", theExercise);
-		return exerciseService.getAllExercise();
-	}
+
 }

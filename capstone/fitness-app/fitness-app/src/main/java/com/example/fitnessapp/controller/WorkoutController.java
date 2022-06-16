@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import com.example.fitnessapp.entity.Exercise;
 import com.example.fitnessapp.entity.User;
 import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.ExerciseRepo;
+import com.example.fitnessapp.repository.UserRepo;
 import com.example.fitnessapp.repository.WorkoutRepo;
 import com.example.fitnessapp.service.ExerciseService;
 import com.example.fitnessapp.service.UserService;
@@ -35,6 +37,10 @@ import com.example.fitnessapp.service.WorkoutService;
 @RequestMapping(path = "/workout")
 public class WorkoutController {
 
+	
+	@Autowired
+	UserRepo userRepo;
+	
 	@Autowired
 	WorkoutService workoutService;
 
@@ -59,11 +65,25 @@ public class WorkoutController {
 //		workoutService.addWorkout(theworkout);
 //		return "gucci";
 //		}
-//	
+
+	
+
 	@GetMapping({"", "/", "/list"})
 	public String workoutHomeAllWorkOuts(Model model) {
 		List<Workout> workout = workoutService.getAllWorkout();
 		List<Exercise> exercise = exerciseService.getAllExercise();
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof UserDetails) {
+			String username = ((UserDetails)principal).getUsername();
+			System.out.println("This is First IF" + username);
+			User user1 = userRepo.findByEmail(username);
+			System.out.println("email=" + user1.getEmail() + "name =" + user1.getFirstName() + "id = " + user1.getUserId());
+		} else {
+			String username = principal.toString();
+			System.out.println("This is first Else" + username);
+		}
+		
 
 		model.addAttribute("workout", workout);
 		model.addAttribute("exercise", exercise);
@@ -71,13 +91,6 @@ public class WorkoutController {
 		return "workout_home_page";
 	}
 
-	@GetMapping("/registerworkout")
-	public String workoutAddForm(Model model, User userid) {
-		Workout workout = new Workout();
-
-		model.addAttribute("workout", workout);
-		return "workout_form";
-	}
 
 	@PostMapping("/process_workout")
 	public String processWorkout(Workout workout) {

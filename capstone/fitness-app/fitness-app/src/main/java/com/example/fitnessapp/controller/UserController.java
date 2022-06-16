@@ -29,25 +29,6 @@ public class UserController {
 		theModel.addAttribute("users", theUser);
 		return theUser;
 	}
-	@PostMapping(path = "/findbyid")
-	public @ResponseBody Optional<User> getUserbyId(@RequestParam Long id) {
-		return userService.getUserById(id);
 
-	}
-
-//	@PostMapping(path = "/addusers")
-//	public @ResponseBody String addUser(@RequestParam String username, @RequestParam String fname,
-//			@RequestParam String lname, @RequestParam Integer height, @RequestParam Integer weight,
-//			@RequestParam Integer age) {
-//		User newUser = new User();
-//		newUser.setUsername(username);
-//		newUser.setFirstName(fname);
-//		newUser.setLastName(lname);
-//		newUser.setHeight(height);
-//		newUser.setWeight(weight);
-//		newUser.setAge(age);
-//		userService.addUser(newUser);
-//		return "user saved";
-//	}
 
 }
