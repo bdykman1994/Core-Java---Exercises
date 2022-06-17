@@ -25,12 +25,7 @@
 	
 		<div><h2>Add Workout</h2></div>
 		<form th:action="@{/workout/saveWorkout}" th:object="${workout}"
-			method="POST">
-			<input type="text" th:field="*{userId}"
-				
-				th:placeholder="${#authentication.getPrincipal().getUsersId()}"
-				class="form-control col-4 mb--4" /> 
-				
+			method="POST">	
 				<input type="date"
 				th:field="*{date}"
 				th:text="${#dates.format(workout.date, 'MM-dd-yyyy')}"
