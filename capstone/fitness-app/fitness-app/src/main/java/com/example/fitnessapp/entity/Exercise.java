@@ -1,8 +1,11 @@
 package com.example.fitnessapp.entity;
 
 import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,9 +36,9 @@ public class Exercise implements Serializable  {
 	@Column(name = "exercise_id")
 	private Long exerciseId;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "workout_id")
-	private Workout workout;
+	private Workout workoutId;
 	
 	@Column(name = "exerciseType")
 	private String exerciseType; 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up - CodeJava</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<div>
+			<h1>Add Exercise Page</h1>
+		</div>
+		<form th:action="@{/workout/saveExercise}" th:object="${exercise}"
+			method="post" style="max-width: 600px; margin: 0 auto;">
+			<div class="m-3">
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Exercise Name: </label>
+					<div class="col-8">
+						<input type="text" th:field="*{exerciseType}" class="form-control"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Sets: </label>
+					<div class="col-8">
+						<input type="text" th:field="*{sets}" class="form-control"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Reps: </label>
+					<div class="col-8">
+						<input type="text" th:field="*{reps}" class="form-control"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Time: </label>
+					<div class="col-8">
+						<input type="text" th:field="*{time}" class="form-control"
+							required  />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Weight: </label>
+					<div class="col-8">
+						<input type="text" th:field="*{weight}" class="form-control"
+							required />
+					</div>
+				</div>
+	
+				<div>
+					<button type="submit" class="btn btn-primary">Sign Up</button>
+								<input type="hidden"  th:field="*{exerciseId}"  />
+								<input type="hidden"  th:field="*{workoutId}"  />
+					
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
