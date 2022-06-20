@@ -4,6 +4,8 @@
 
 
 <head>
+    <link th:href="@{css/exercisePage.css}" rel="stylesheet" />
+
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
 <link rel="stylesheet"
@@ -13,25 +15,42 @@
 <title>Document</title>
 </head>
 <body>
-	<header>
-		<a href="#" class="logo">Swole Patrol</a>
-		<ul>
-			<li><a th:href="@{/workout/registerworkout}">Add Workout</a></li>
-			<li><a th:href="@{/workout/registerexercise}">Add Exercise</a></li>
-			<li>Workout Programs</li>
-		</ul>
-	</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><strong>Swole Patrol</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><strong>Home (Not Implemented Yet)</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/logout}"><strong>Logout</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><strong>Pricing(Not Implemented Yet)</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><strong>Disabled(Not Implemented Yet)</strong></a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-	<div>
-		<a th:href="@{/workout/addWorkoutForm}" class="btn btn-primary mb-2">Add
-			Workout</a>
+</nav>
 
+  <div class="container">
+<img src="../static/images/yoga_picture.jpg" th:src="@{../images/yoga_picture.jpg}" class="img-fluid" alt="Responsive image">
+  </div>
+
+	<div class="container d-flex justify-content-center">
+		<strong><span th:text="${#authentication.getPrincipal().getUsername}"></span></strong>
 	</div>
-	<div>
-		<span th:text="${#authentication.getPrincipal().getUsername}"></span>
-	</div>
-	<div>
-		<table class="table table-bordered table-striped" id="workout-table">
+
+	<div class="container workout " style="height:50px">
+		<table class="table table-bordered  table-striped" id="workout-table" >
 			<thead>
 				<tr>
 					<th>Workout ID</th>
@@ -49,11 +68,14 @@
 						th:href="@{/workout/deleteWorkout(workoutId = ${workout.workoutId})}"
 						class="btn btn-danger ml-2">Delete</a> <a
 						th:href="@{/workout/AddExerciseForm(workoutId = ${workout.workoutId})}"
-						class="btn btn-primary ml-4">Add Exercise</a></td>
+						class="btn btn-primary ml-2">Add Exercise</a></td>
 				</tr>
 			</tbody>
 		</table>
+	<div class = "d-flex justify-content-center">
+		<a th:href="@{/workout/addWorkoutForm}" class="btn btn-primary mb-2">Add Workout</a>
 
+	</div>
 		<div>
 			<table class="table table-bordered table-striped" id="workout-table">
 				<thead>
