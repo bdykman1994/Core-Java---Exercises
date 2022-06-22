@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.fitnessapp.entity.User;
-import com.example.fitnessapp.repository.UserRepo;
 
 public interface UserService {
 
@@ -14,7 +13,7 @@ public interface UserService {
 
 	Optional<User> getUserById(Long userid);
 
-//	public User updateWorkoutUserID(User user);
+	public User findUserByEmail(String username);
 
 
 

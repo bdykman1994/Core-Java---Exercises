@@ -3,14 +3,10 @@ package com.example.fitnessapp.serviceimpl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.fitnessapp.entity.User;
-import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.UserRepo;
 import com.example.fitnessapp.service.UserService;
 
@@ -37,6 +33,11 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> getUserById(Long id) {
 		return userRepo.findById(id);
 
+	}
+
+	@Override
+	public User findUserByEmail(String username) {
+		return userRepo.findByEmail(username);
 	}
 
 //	@Override

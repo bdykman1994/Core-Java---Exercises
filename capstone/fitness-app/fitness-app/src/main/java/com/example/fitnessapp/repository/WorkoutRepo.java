@@ -17,4 +17,6 @@ public interface WorkoutRepo extends JpaRepository<Workout, Long> {
 			+ "where w.user_id = :userId", nativeQuery = true)
 	public List<Workout> getWorkoutsForUser(Long userId);
 	
+
+	
 }

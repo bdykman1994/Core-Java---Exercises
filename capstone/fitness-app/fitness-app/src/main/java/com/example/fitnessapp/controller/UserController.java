@@ -17,14 +17,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	@GetMapping("/listusers")
-	public @ResponseBody List<User> listUser(Model theModel) {
-
-		List<User> theUser = userService.getUser();
-		theModel.addAttribute("users", theUser);
-		return theUser;
-	}
 
 
 }

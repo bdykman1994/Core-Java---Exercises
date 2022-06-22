@@ -3,13 +3,9 @@ package com.example.fitnessapp.serviceimpl;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.example.fitnessapp.CustomUserDetails;
 import com.example.fitnessapp.entity.Workout;
 import com.example.fitnessapp.repository.UserRepo;
 import com.example.fitnessapp.repository.WorkoutRepo;
@@ -26,40 +22,30 @@ public class WorkoutServiceImpl implements WorkoutService {
 
 
 	@Override
-	@Transactional
+	
 	public void addWorkout(Workout workout) {
 		workoutRepo.save(workout);
 	}
 
 
 	@Override
-	@Transactional
 	public Optional<Workout> getWorkoutById(Long id) {
 		return workoutRepo.findById(id);
 	}
 
-	@Override
-	public List<Workout> getAllWorkout() {
-		return (List<Workout>) workoutRepo.findAll();
-	}
 
 	@Override
-	public void deleteWorkout(Long id) {
-		// TODO Auto-generated method stub
-		
+	public void deleteWorkoutById(Long workoutId){
+		 workoutRepo.deleteById(workoutId);
 	}
 
 
 
+	@Override
+	public List<Workout> getAllWorkoutForUser(Long userId) {
+		return workoutRepo.getWorkoutsForUser(userId);
+	}
 
-//	@Override
-//	public Workout updateExerciseWorkoutID(Workout workout) {
-//	List<Exercise> exr = workout.getExercise();
-//	for (Exercise ex: exr) {
-//		ex.setWorkout(workout);
-//	}
-//	
-//		return null;
-//	}
+
 
 }

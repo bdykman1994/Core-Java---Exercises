@@ -34,4 +34,14 @@ public class ExerciseServiceImpl implements ExerciseService {
 		return exerciseRepo.findById(exerciseId);
 	}
 
+	@Override
+	public List<Exercise> getAllExercisesFromUser(Long exerciseId) {
+		return exerciseRepo.getAllExercisesFromUser(exerciseId);
+	}
+
+	@Override
+	public void deleteExerciseById(Long exerciseId) {
+		exerciseRepo.deleteById(exerciseId);
+	}
+
 }
