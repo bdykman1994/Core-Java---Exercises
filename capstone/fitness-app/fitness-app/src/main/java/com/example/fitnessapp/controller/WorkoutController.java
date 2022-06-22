@@ -53,7 +53,7 @@ public class WorkoutController {
 		List<Workout> workout = workoutService.getAllWorkoutForUser(userId);
 		List<Exercise> exercise = exerciseService.getAllExercisesFromUser(userId);
 		
-		log.info(session.getAttribute("LoggedInUsersUsername") + " Has Gone to Home Page");
+//		log.info(session.getAttribute("LoggedInUsersUsername") + " Has Gone to Home Page");
 		
 		mav.addObject("workout", workout);
 		mav.addObject("exercise", exercise);
@@ -67,7 +67,7 @@ public class WorkoutController {
 		Workout newWorkout = new Workout();
 		mav.addObject("workout", newWorkout);
 		
-		log.info(session.getAttribute("LoggedInUsersUsername") + " has accessed workout form");
+//		log.info(session.getAttribute("LoggedInUsersUsername") + " has accessed workout form");
 		
 		return mav;
 	}
@@ -120,7 +120,7 @@ public class WorkoutController {
 		newExercise.setWorkoutId(workout);
 		mav.addObject("exercise", newExercise);
 		
-		log.info(session.getAttribute("LoggedInUsersUsername") + " has accessed an Exercise form");
+//		log.info(session.getAttribute("LoggedInUsersUsername") + " has accessed an Exercise form");
 
 		
 		return mav;
@@ -144,7 +144,7 @@ public class WorkoutController {
 		Exercise exercise = exerciseService.getExerciseById(exerciseId).get();
 		mav.addObject("exercise", exercise);
 		
-		log.info(session.getAttribute("LoggedInUsersUsername") + " has updated a workout");
+		log.info(session.getAttribute("LoggedInUsersUsername") + " has updated an exercise");
 
 		
 		return mav;

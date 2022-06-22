@@ -50,6 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //some reason it authenticates through username rather than email
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+			.antMatchers("/workout_tips").permitAll()
 			.antMatchers("/users").authenticated()
 			.anyRequest().permitAll()
 			.and()
