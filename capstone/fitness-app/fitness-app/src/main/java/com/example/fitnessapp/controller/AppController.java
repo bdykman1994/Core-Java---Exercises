@@ -31,12 +31,21 @@ public class AppController {
 		
 	}
 	
+//	
+//	@GetMapping("/register")
+//	public String showRegistrationForm(Model model) {
+//		model.addAttribute("user", new User());
+//
+//		return "signup_form";
+//	}
+	
 	
 	@GetMapping("/register")
-	public String showRegistrationForm(Model model) {
-		model.addAttribute("user", new User());
+	public ModelAndView showRegistrationForm(Model model) {
+		ModelAndView mav = new ModelAndView("signup_form");
+		mav.addObject("user", new User());
 
-		return "signup_form";
+		return mav;
 	}
 
 	@PostMapping("/process_register")

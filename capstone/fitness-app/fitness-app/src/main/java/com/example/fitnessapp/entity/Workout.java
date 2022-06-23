@@ -45,6 +45,9 @@ public class Workout implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User userId;
 
+	@Column(name = "workout_name")
+	private String workoutName;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "workoutId", fetch = FetchType.LAZY)
 	private List<Exercise> exercise;
 

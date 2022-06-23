@@ -13,9 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,8 +47,8 @@ public class Exercise implements Serializable  {
 	@Column(name = "reps")
 	private Long reps;
 
-	@Column(name = "time")
-	private Integer time;
+//	@Column(name = "time")
+//	private Integer time;
 
 	@Column(name = "weight")
 	private Integer weight;

@@ -45,6 +45,10 @@ public class WorkoutController {
 		User user = userService.findUserByEmail(username);
 		Long userId = user.getUserId();
 		
+		if(session.isNew()) {
+			log.info(session.getId() + "new person has joined");
+		}
+		
 		//saves username for later logs
 		session.setAttribute("LoggedInUsersUsername", username);
 		

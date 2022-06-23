@@ -12,10 +12,6 @@
 
 .banner
 {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100px;
-    max-height: 25vh;
 	background:url(../static/images/yoga_picture.jpg);
 
 }

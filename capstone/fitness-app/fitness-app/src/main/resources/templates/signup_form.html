@@ -56,25 +56,32 @@
 							required minlength="2" maxlength="20" />
 					</div>
 				</div>
+				
+			
+			
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Age: </label>
 					<div class="col-8">
-						<input type="text" th:field="*{age}" class="form-control" required
-							minlength="2" maxlength="20" />
+						<select th:field="*{age}" class="browser-default custom-select" aria-label="Default select example">
+							<option selected th:each="num : ${#numbers.sequence(0, 100)}"
+								 th:value="${num}" th:text="${num}"></option>
+						</select>
 					</div>
+					
+					
 				</div>
-								<div class="form-group row">
+				<div class="form-group row">
 					<label class="col-4 col-form-label">Height: </label>
 					<div class="col-8">
-						<input type="text" th:field="*{height}" class="form-control" required
-							minlength="2" maxlength="20" />
+						<input type="text" th:field="*{height}" class="form-control"
+							required minlength="2" maxlength="20" />
 					</div>
 				</div>
-								<div class="form-group row">
+				<div class="form-group row">
 					<label class="col-4 col-form-label">Weight: </label>
 					<div class="col-8">
-						<input type="text" th:field="*{weight}" class="form-control" required
-							minlength="2" maxlength="20" />
+						<input type="text" th:field="*{weight}" class="form-control"
+							required minlength="2" maxlength="20" />
 					</div>
 				</div>
 				<div>
@@ -85,3 +92,5 @@
 	</div>
 </body>
 </html>
+<!-- 	<input type="text" th:field="*{age}" class="form-control" required
+							minlength="2" maxlength="20" />  -->

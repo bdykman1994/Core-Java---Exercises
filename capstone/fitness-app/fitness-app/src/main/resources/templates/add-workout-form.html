@@ -29,7 +29,11 @@
 				<input type="date"
 				th:field="*{date}"
 				th:text="${#dates.format(workout.date, 'MM-dd-yyyy')}"
-				class="form-control col-4 mb--4" />
+				class="form-control col-4 mb-4" />
+
+				<input type="text"
+				th:field="*{workoutName}"
+				class="form-control col-4 mb-4"/>
 
 			<button class="btn btn=primary" type="submit">Save</button>
 			<input type="hidden" th:field="*{workoutId}" />
