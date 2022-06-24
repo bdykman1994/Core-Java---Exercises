@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService {
 		return userRepo.findByEmail(username);
 	}
 
+	@Override
+	public User converUserHeight(Integer height) {
+		return null;
+	}
+
 //	@Override
 //	public User updateWorkoutUserID(User user) {
 //		List<Workout> wrk = user.getWorkout();

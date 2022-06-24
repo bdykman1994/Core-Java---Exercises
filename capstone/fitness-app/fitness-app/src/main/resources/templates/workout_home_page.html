@@ -23,7 +23,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><strong>Swole Patrol</strong></a>
+			<a class="navbar-brand" href="#"><strong>Workout Tracker</strong></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -92,7 +92,6 @@
 			<table class="table table-bordered table-striped" id="workout-table">
 				<thead>
 					<tr>
-						<th>Exercise ID</th>
 						<th>Exercise Name</th>
 						<th>Reps</th>
 						<th>Sets</th>
@@ -103,7 +102,6 @@
 				<tbody>
 					<tr th:each="exercise:${exercise}">
 
-						<td th:text="${exercise.exerciseId}"></td>
 						<td th:text="${exercise.exerciseType}"></td>
 						<td th:text="${exercise.reps}"></td>
 						<td th:text="${exercise.sets}"></td>

@@ -23,13 +23,11 @@ public class ExerciseServiceImpl implements ExerciseService {
 	}
 
 	@Override
-	@Transactional
 	public void addExercise(Exercise exercise) {
 		exerciseRepo.save(exercise);
 	}
 
 	@Override
-	@Transactional
 	public Optional<Exercise> getExerciseById(Long exerciseId) {
 		return exerciseRepo.findById(exerciseId);
 	}

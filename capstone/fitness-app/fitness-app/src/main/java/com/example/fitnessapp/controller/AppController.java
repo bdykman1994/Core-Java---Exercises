@@ -40,15 +40,15 @@ public class AppController {
 //	}
 	
 	
-	@GetMapping("/register")
-	public ModelAndView showRegistrationForm(Model model) {
+	@GetMapping(value ="/register")
+	public ModelAndView showRegistrationForm() {
 		ModelAndView mav = new ModelAndView("signup_form");
 		mav.addObject("user", new User());
-
+		
 		return mav;
 	}
 
-	@PostMapping("/process_register")
+	@PostMapping(value = "/process_register")
 	public String processRegister(User user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -59,11 +59,19 @@ public class AppController {
 		return "register_success";
 	}
 
-	@GetMapping("/users")
-	public String listUsers(Model model) {
+//	@GetMapping("/users")
+//	public String listUsers(Model model) {
+//		List<User> listUsers = userRepo.findAll();
+//		model.addAttribute("listUsers", listUsers);
+//
+//		return "users";
+//	}
+	
+	@GetMapping( value = "/users")
+	public ModelAndView listUsers() {
+		ModelAndView mav = new ModelAndView("users");
 		List<User> listUsers = userRepo.findAll();
-		model.addAttribute("listUsers", listUsers);
-
-		return "users";
+		mav.addObject("listUsers", listUsers);
+		return mav;
 	}
 }
