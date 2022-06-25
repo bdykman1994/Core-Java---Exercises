@@ -28,6 +28,8 @@ class WorkoutServiceImplTest {
 		workout.setDate(date);
 		workout.setWorkoutName("Leg Day");
 		
+		workoutService.addWorkout(workout);
+		
 		assertEquals("Leg Day", workout.getWorkoutName());
 			 
 		
