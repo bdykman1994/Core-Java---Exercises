@@ -41,26 +41,28 @@ public class WorkoutController {
 	public ModelAndView workoutHomeAllWorkOuts(HttpSession session) {
 		ModelAndView mav = new ModelAndView("workout_home_page");
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String username = ((UserDetails) principal).getUsername();
-		User user = userService.findUserByEmail(username);
+		String useremail = ((UserDetails) principal).getUsername();
+		User user = userService.findUserByEmail(useremail);
 		Long userId = user.getUserId();
 		
-		if(session.isNew()) {
-			log.info(session.getId() + "new person has joined");
-		}
+//		if(session.isNew()) {
+//			log.info(session.getId() + "new person has joined");
+//		}
 		
 		//saves username for later logs
-		session.setAttribute("LoggedInUsersUsername", username);
-		
+		session.setAttribute("LoggedInUsersUsername", useremail);
+		session.setAttribute("LoggedInUsersID", userId);
 		
 
 		List<Workout> workout = workoutService.getAllWorkoutForUser(userId);
 		List<Exercise> exercise = exerciseService.getAllExercisesFromUser(userId);
 		
-//		log.info(session.getAttribute("LoggedInUsersUsername") + " Has Gone to Home Page");
+		log.info(session.getAttribute("LoggedInUsersId") + " Has Gone to Home Page");
 		
 		mav.addObject("workout", workout);
 		mav.addObject("exercise", exercise);
+		
+		
 		
 		return mav;
 	}
@@ -99,18 +101,16 @@ public class WorkoutController {
 		Workout workout = workoutService.getWorkoutById(workoutId).get();
 		mav.addObject("workout", workout);
 		
-		log.info(session.getAttribute("LoggedInUsersUsername") + " has updated a workout");
-
+//		log.info(session.getAttribute("LoggedInUsersUsername") + " has updated a workout");
+		log.info(session.getAttribute("LoggedInUsersId") + " Has Gone to Home Page");
 		
 		return mav;
 	}
 
 	@GetMapping(value = "/deleteWorkout")
 	public String deleteWorkout(@RequestParam Long workoutId, HttpSession session) {
-
+		
 		workoutService.deleteWorkoutById(workoutId);
-
-		log.info(session.getAttribute("LoggedInUsersUsername") + " has deleted a workout");
 
 		
 		return "redirect:/workout/list";

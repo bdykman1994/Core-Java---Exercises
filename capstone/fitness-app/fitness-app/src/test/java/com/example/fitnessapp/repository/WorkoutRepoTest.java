@@ -3,38 +3,36 @@ package com.example.fitnessapp.repository;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.example.fitnessapp.entity.Exercise;
+import com.example.fitnessapp.entity.Workout;
+
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-//annotation that Spring supports for a JPA test that focuses only on JPA components.	
-//@DataJpaTest
-class ExerciseRepoTest {
+class WorkoutRepoTest {
 
-	
 	@Autowired
-	private ExerciseRepo exerciserepo;
-		
-
+	WorkoutRepo workoutRepo;
 	
 	@Test
-	public void givenUserIdwillExerciesShowRelatedToUser() {
+	void WillWorkoutsForUsersPopulate() {
 		Long userId = (long) 1;
 		
-		List<Exercise> exerciseList = exerciserepo.getAllExercisesFromUser(userId);
+		List<Workout> listWorkouts = workoutRepo.getWorkoutsForUser(userId);
 		
-		assertEquals(1, exerciseList.size());
-
-		}
-
+		Optional<Workout> workout = workoutRepo.findById(userId);
+		
+		assertThat(listWorkouts.contains(workout));
 		
 	}
-	
 
-	
+}
