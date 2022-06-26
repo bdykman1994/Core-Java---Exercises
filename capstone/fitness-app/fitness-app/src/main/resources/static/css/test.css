@@ -8,13 +8,25 @@
   font-family: 'Poppins', sans-serif;
 }
 
-
-
-
 body {
-  background-color: white;
-  color: black;
-  font-size: 25px;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+main {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+p {
+  text-align: left;
+  padding: 0 20px;
+}
+
+code {
+  color: firebrick;
 }
 
 .darkToggle {

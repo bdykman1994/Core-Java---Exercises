@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -36,7 +38,6 @@ public class Workout implements Serializable {
 	@Column(name = "workout_id")
 	private Long workoutId;
 		
-
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date")
 	private Date date;
@@ -44,9 +45,11 @@ public class Workout implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User userId;
-
+	
+	@NotEmpty
 	@Column(name = "workout_name")
 	private String workoutName;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "workoutId", fetch = FetchType.LAZY)
 	private List<Exercise> exercise;

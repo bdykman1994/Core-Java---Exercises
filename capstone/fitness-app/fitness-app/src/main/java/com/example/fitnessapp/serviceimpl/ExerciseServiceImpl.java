@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.fitnessapp.entity.Exercise;
 import com.example.fitnessapp.repository.ExerciseRepo;
 import com.example.fitnessapp.service.ExerciseService;

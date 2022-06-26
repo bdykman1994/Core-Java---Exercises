@@ -6,8 +6,14 @@
 <link rel="stylesheet" type="text/css"
 	href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-<script type="text/javascript"
-	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<link th:href="@{/css/test.css}" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" 
+	referrerpolicy="no-referrer" />
+	<link th:href="@{/css/test.css}" rel="stylesheet" />
+	
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,10 +33,14 @@
 								Tips</strong></a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/logout}"><strong>Logout</strong></a>
 					</li>
+					<li class="nav-item"><i class="fa-solid fa-lightbulb"></i>
+<input type="checkbox" id="darkToggle">
+<label for="darkToggle"></label></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+
 	<div class="container text-center">
 		<div>
 			<h1>Add Exercise Page</h1>
@@ -79,5 +89,8 @@
 			</div>
 		</form>
 	</div>
+		<script src="../javascript/darkmode.js"></script>
+	
 </body>
+
 </html>

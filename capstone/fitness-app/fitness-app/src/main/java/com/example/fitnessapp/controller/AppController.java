@@ -2,20 +2,23 @@ package com.example.fitnessapp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.fitnessapp.entity.User;
 import com.example.fitnessapp.repository.UserRepo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class AppController {
 
@@ -63,5 +66,19 @@ public class AppController {
 		mav.addObject("listUsers", listUsers);
 		return mav;
 	}
+	
+	@GetMapping(value = "/login")
+	public ModelAndView loginpage() {
+		ModelAndView mav = new ModelAndView("login_page");
+		return mav;
+	}
+
+	@GetMapping(value = "/logout")
+    public String logout(HttpSession session, Authentication authentication, RedirectAttributes redirectAttributes) {
+        log.info("user logged out");
+        session.invalidate();
+        authentication.isAuthenticated();
+        return "redirect:/";
+    }
 	
 }

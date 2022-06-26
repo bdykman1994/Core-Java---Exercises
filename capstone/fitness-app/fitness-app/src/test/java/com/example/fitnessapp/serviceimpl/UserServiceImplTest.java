@@ -26,7 +26,6 @@ class UserServiceImplTest {
 		user.setEmail("user@gmail.com");
 		user.setFirstName("Brandon");
 		user.setLastName("Smith");
-		user.setHeight(12);
 		user.setWeight(100);
 		user.setUsername("bsmith");
 		user.setPassword("123456");

@@ -69,9 +69,6 @@ public class User implements Serializable {
 	@Column(name = "last_name", table = "biometric")
 	private String lastName;
 
-	@Column(name = "height", table = "biometric")
-	private Integer height;
-
 	@Column(name = "weight", table = "biometric")
 	private Integer weight;
 

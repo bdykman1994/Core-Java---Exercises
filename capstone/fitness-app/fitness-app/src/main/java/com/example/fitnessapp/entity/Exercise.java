@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,19 +39,19 @@ public class Exercise implements Serializable  {
 	@JoinColumn(name = "workout_id")
 	private Workout workoutId;
 	
+	@NotEmpty
 	@Column(name = "exerciseType")
 	private String exerciseType; 
 	
-	
+	@NotNull
 	@Column(name = "sets")
 	private Long sets;
 	
+	@NotNull
 	@Column(name = "reps")
 	private Long reps;
 
-//	@Column(name = "time")
-//	private Integer time;
-
+	@NotNull
 	@Column(name = "weight")
 	private Integer weight;
 

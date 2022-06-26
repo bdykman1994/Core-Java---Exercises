@@ -8,6 +8,8 @@
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+		<link th:href="@{/css/exercisePage.css}" rel="stylesheet" />
+	
 </head>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
@@ -88,16 +90,8 @@
 								 th:value="${num}" th:text="${num}"></option>
 						</select>
 					</div>
-					
-					
 				</div>
-				<div class="form-group row">
-					<label class="col-4 col-form-label">Height: </label>
-					<div class="col-8">
-						<input type="text" th:field="*{height}" class="form-control"
-							required minlength="2" maxlength="20" />
-					</div>
-				</div>
+
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Weight: </label>
 					<div class="col-8">
