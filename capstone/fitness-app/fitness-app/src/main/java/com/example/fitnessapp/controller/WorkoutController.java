@@ -40,14 +40,22 @@ public class WorkoutController {
 	@GetMapping(value = { "", "/", "/list" })
 	public ModelAndView workoutHomeAllWorkOuts(HttpSession session) {
 		ModelAndView mav = new ModelAndView("workout_home_page");
+		
+		//SecurityContextHolder stores information about logged in user. We are then grabbing the email of the logged in user.
+		//We then cast connver that email to a string so it can be used for a custom query.
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String useremail = ((UserDetails) principal).getUsername();
+	
+		
+		//using authenticated User email for a custom query to grab the actual User object of the logged in user.
+		// basically the convertion of classes would look like this ..
+		//(Security context holder aka Logged in user) -> Grab email of logged in user -> Perform custom query with said email to grab the actual object of user
 		User user = userService.findUserByEmail(useremail);
+		
+		//grabbing the user id of user to assign foreign keys to objects made by logged in user
 		Long userId = user.getUserId();
 		
-//		if(session.isNew()) {
-//			log.info(session.getId() + "new person has joined");
-//		}
+
 		
 		//saves username for later logs
 		session.setAttribute("LoggedInUsersUsername", useremail);
@@ -57,7 +65,7 @@ public class WorkoutController {
 		List<Workout> workout = workoutService.getAllWorkoutForUser(userId);
 		List<Exercise> exercise = exerciseService.getAllExercisesFromUser(userId);
 		
-		log.info(session.getAttribute("LoggedInUsersId") + " Has Gone to Home Page");
+		log.info(session.getAttribute("LoggedInUsersID") + " Has Gone to Home Page");
 		
 		mav.addObject("workout", workout);
 		mav.addObject("exercise", exercise);
