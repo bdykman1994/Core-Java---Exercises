@@ -17,7 +17,6 @@
 	crossorigin="anonymous" 
 	referrerpolicy="no-referrer" />
 	<link th:href="@{/css/test.css}" rel="stylesheet" />
-	
 <title>Document</title>
 </head>
 <body>
@@ -45,6 +44,10 @@
 			</div>
 		</div>
 	</nav>
+<h2 class="alert alert-success text-center" th:text="${SavedExercise}" th:if="${SavedExercise}"></h2>
+<h2 class="alert alert-success text-center" th:text="${SavedWorkout}" th:if="${SavedWorkout}"></h2>
+<h2 class="alert alert-dangertext-center" th:text="${deletedExercise}" th:if="${deletedExercise}"></h2>
+<h2 class="alert alert-danger text-center" th:text="${deletedWorkout}" th:if="${deletedWorkout}"></h2>
 
 	<div class="container d-flex banner">
 		<img src="../static/images/yoga_picture.jpg"

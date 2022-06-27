@@ -18,7 +18,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><strong>Workout Tracker</strong></a>
+			<a class="navbar-brand" th:href="@{/workout}"><strong>Workout Tracker</strong></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -59,24 +59,31 @@
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Sets: </label>
 					<div class="col-8">
-						<input type="text" th:field="*{sets}" class="form-control"
-							required />
+						<select th:field="*{sets}" class="browser-default custom-select" aria-label="Default select example">
+							<option selected th:each="num : ${#numbers.sequence(0, 100, 1)}"
+								 th:value="${num}" th:text="${num}"></option>
+						</select>
 					</div>
 				</div>
+
 
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Reps: </label>
 					<div class="col-8">
-						<input type="text" th:field="*{reps}" class="form-control"
-							required />
+						<select th:field="*{reps}" class="browser-default custom-select" aria-label="Default select example">
+							<option selected th:each="num : ${#numbers.sequence(0, 100, 1)}"
+								 th:value="${num}" th:text="${num}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Weight: </label>
 					<div class="col-8">
-						<input type="text" th:field="*{weight}" class="form-control"
-							required />
+						<select th:field="*{weight}" class="browser-default custom-select" aria-label="Default select example">
+							<option selected th:each="num : ${#numbers.sequence(0, 1000, 5)}"
+								 th:value="${num}" th:text="${num}"></option>
+						</select>
 					</div>
 				</div>
 	

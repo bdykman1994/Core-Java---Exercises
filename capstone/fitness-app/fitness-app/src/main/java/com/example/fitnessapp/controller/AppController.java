@@ -74,11 +74,13 @@ public class AppController {
 	}
 
 	@GetMapping(value = "/logout")
-    public String logout(HttpSession session, Authentication authentication, RedirectAttributes redirectAttributes) {
-        log.info("user logged out");
-        session.invalidate();
+    public ModelAndView logout(HttpSession session, Authentication authentication, RedirectAttributes redirectAttributes) {
+        ModelAndView mav = new ModelAndView("redirect:/");
+		session.invalidate();
         authentication.isAuthenticated();
-        return "redirect:/";
+        String LoggedOut = "You have been logged out";
+        redirectAttributes.addFlashAttribute("LoggedOut",LoggedOut);
+        return mav;
     }
 	
 }

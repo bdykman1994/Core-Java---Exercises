@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.example.fitnessapp.entity.Exercise;
 import com.example.fitnessapp.entity.User;
 import com.example.fitnessapp.entity.Workout;
@@ -87,20 +89,26 @@ public class WorkoutController {
 	}
 
 	@PostMapping(value = "/saveWorkout")
-	public String saveWorkout(@ModelAttribute Workout workout, HttpSession session) {
+	public ModelAndView saveWorkout(@ModelAttribute Workout workout, HttpSession session, RedirectAttributes redirectAttributes) {
 
 		// to set the foreign key user_id to a newly created workout ( that way we know
 		// who made the workout)
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
 		User user = userService.findUserByEmail(username);
+		
+		ModelAndView mav = new ModelAndView("redirect:/workout/list");
+		
+		String saved = "Workout has been saved";
+		redirectAttributes.addFlashAttribute("SavedWorkout", saved);
+		
 		workout.setUserId(user);
 		workoutService.addWorkout(workout);
 		
 		log.info(session.getAttribute("LoggedInUsersUsername") + " has saved a workout");
 
 		
-		return "redirect:/workout/list";
+		return mav;
 	}
 
 	@GetMapping(value = "/showUpdateForm")
@@ -116,12 +124,14 @@ public class WorkoutController {
 	}
 
 	@GetMapping(value = "/deleteWorkout")
-	public String deleteWorkout(@RequestParam Long workoutId, HttpSession session) {
-		
+	public ModelAndView deleteWorkout(@RequestParam Long workoutId, HttpSession session, RedirectAttributes redirectAttributes) {
+		ModelAndView mav = new ModelAndView("redirect:/workout/list");
 		workoutService.deleteWorkoutById(workoutId);
-
 		
-		return "redirect:/workout/list";
+		String delete = "Workout has been deleted";
+		redirectAttributes.addFlashAttribute("deletedWorkout", delete);
+		
+		return mav;
 	}
 
 	@GetMapping(value = "AddExerciseForm")
@@ -139,10 +149,11 @@ public class WorkoutController {
 	}
 
 	@PostMapping(value = "/saveExercise")
-	public String saveWorkout(@ModelAttribute Exercise exercise, HttpSession session) {
+	public String saveWorkout(@ModelAttribute Exercise exercise, HttpSession session, RedirectAttributes redirectAttributes ) {
 
 		exerciseService.addExercise(exercise);
-		
+		String saved = "Exercise has been saved";
+		redirectAttributes.addFlashAttribute("SavedExercise", saved);
 		log.info(session.getAttribute("LoggedInUsersUsername") + " has added an exercise");
 
 		
@@ -163,13 +174,16 @@ public class WorkoutController {
 	}
 
 	@GetMapping(value = "/deleteExercise")
-	public String deleteExerciseForm(@RequestParam Long exerciseId, HttpSession session) {
+	public ModelAndView deleteExerciseForm(@RequestParam Long exerciseId, HttpSession session, RedirectAttributes redirectAttributes) {
+		ModelAndView mav = new ModelAndView("redirect:/workout/list");
+		
 		exerciseService.deleteExerciseById(exerciseId);
-
+		String delete = "Exercise has been deleted";
+		redirectAttributes.addFlashAttribute("deletedExercise", delete);
 		log.info(session.getAttribute("LoggedInUsersUsername") + " has deleted an exercise");
 
 		
-		return "redirect:/workout/list";
+		return mav;
 	}
 
 }
