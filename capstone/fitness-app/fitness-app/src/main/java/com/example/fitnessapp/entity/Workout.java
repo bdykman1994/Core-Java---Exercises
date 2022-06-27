@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,6 +39,7 @@ public class Workout implements Serializable {
 	@Column(name = "workout_id")
 	private Long workoutId;
 		
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date")
 	private Date date;
